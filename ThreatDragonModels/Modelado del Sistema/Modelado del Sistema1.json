@@ -1,42 +1,152 @@
 {
-  "version": "2.3.0",
-  "summary": {
-    "title": "Modelado del Sistema",
-    "owner": "Los putos amos",
-    "description": "Dos usuarios. Por diversidad en el ejercicio, uno de ellos utiliza un dispositivo móvil y otro un ordenador.\nPara el usuario de móvil:\nEl almacenamiento de la copia de seguridad en una nube externa.\nRed telefónica.\nLos servidores de la plataforma de mensajería instantánea.\nCon un servidor de identidades y una mailbox.\nLos puntos de acceso de cada usuario, uno por Wi-Fi y otro Ethernet.\nLos proveedores de internet (ISP) y la red troncal que une usuarios, servidores y nubes.\nLos servidores de descifrado del poder judicial.",
-    "id": 0
-  },
-  "detail": {
-    "contributors": [
-      {
-        "name": "Juan"
-      },
-      {
-        "name": "Álvaro"
-      },
-      {
-        "name": "Victor"
-      },
-      {
-        "name": "Luis"
-      },
-      {
-        "name": "Elena"
-      }
+    "summary": "Modelo de amenazas de plataforma de mensajer\u00eda instant\u00e1nea",
+    "detail": "Este modelo representa la infraestructura de una plataforma de mensajer\u00eda instant\u00e1nea con cifrado de extremo a extremo, servicios de copia de seguridad y servidores de descifrado del poder judicial.",
+    "boundaryId": "bd-1",
+    "elements": [
+        {
+            "id": "userA",
+            "name": "Usuario A (M\u00f3vil)",
+            "type": "Actor",
+            "attributes": {}
+        },
+        {
+            "id": "wifi",
+            "name": "Wi-Fi",
+            "type": "Process",
+            "attributes": {}
+        },
+        {
+            "id": "redTelef",
+            "name": "Red Telef\u00f3nica",
+            "type": "Process",
+            "attributes": {}
+        },
+        {
+            "id": "ispA",
+            "name": "ISP Usuario A",
+            "type": "Process",
+            "attributes": {}
+        },
+        {
+            "id": "userB",
+            "name": "Usuario B (Ordenador)",
+            "type": "Actor",
+            "attributes": {}
+        },
+        {
+            "id": "ethernet",
+            "name": "Ethernet",
+            "type": "Process",
+            "attributes": {}
+        },
+        {
+            "id": "ispB",
+            "name": "ISP Usuario B",
+            "type": "Process",
+            "attributes": {}
+        },
+        {
+            "id": "redTroncal",
+            "name": "Red Troncal",
+            "type": "DataStore",
+            "attributes": {}
+        },
+        {
+            "id": "idServer",
+            "name": "Servidor de Identidades",
+            "type": "Process",
+            "attributes": {}
+        },
+        {
+            "id": "mailbox",
+            "name": "Mailbox",
+            "type": "Process",
+            "attributes": {}
+        },
+        {
+            "id": "msgServer",
+            "name": "Servidor de Mensajer\u00eda",
+            "type": "Process",
+            "attributes": {}
+        },
+        {
+            "id": "backup",
+            "name": "Copia de Seguridad (Google/Apple)",
+            "type": "DataStore",
+            "attributes": {}
+        },
+        {
+            "id": "judicial",
+            "name": "Servidores Poder Judicial",
+            "type": "Process",
+            "attributes": {}
+        }
     ],
-    "diagrams": [
-      {
-        "id": 0,
-        "title": "Modelo del Sistema",
-        "diagramType": "STRIDE",
-        "placeholder": "New STRIDE diagram description",
-        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
-        "version": "2.3.0",
-        "cells": []
-      }
-    ],
-    "diagramTop": 1,
-    "reviewer": "Profe",
-    "threatTop": 0
-  }
+    "connections": [
+        {
+            "source": "userA",
+            "target": "wifi",
+            "description": "Conexi\u00f3n Wi-Fi"
+        },
+        {
+            "source": "wifi",
+            "target": "ispA",
+            "description": "Conexi\u00f3n ISP Usuario A"
+        },
+        {
+            "source": "userA",
+            "target": "redTelef",
+            "description": "Conexi\u00f3n Red Telef\u00f3nica"
+        },
+        {
+            "source": "redTelef",
+            "target": "ispA",
+            "description": "Conexi\u00f3n ISP Usuario A"
+        },
+        {
+            "source": "userB",
+            "target": "ethernet",
+            "description": "Conexi\u00f3n Ethernet"
+        },
+        {
+            "source": "ethernet",
+            "target": "ispB",
+            "description": "Conexi\u00f3n ISP Usuario B"
+        },
+        {
+            "source": "ispA",
+            "target": "redTroncal",
+            "description": "Conexi\u00f3n a Red Troncal"
+        },
+        {
+            "source": "ispB",
+            "target": "redTroncal",
+            "description": "Conexi\u00f3n a Red Troncal"
+        },
+        {
+            "source": "redTroncal",
+            "target": "idServer",
+            "description": "Conexi\u00f3n al Servidor de Identidades"
+        },
+        {
+            "source": "redTroncal",
+            "target": "mailbox",
+            "description": "Conexi\u00f3n a Mailbox"
+        },
+        {
+            "source": "redTroncal",
+            "target": "msgServer",
+            "description": "Conexi\u00f3n al Servidor de Mensajer\u00eda"
+        },
+        {
+            "source": "redTroncal",
+            "target": "backup",
+            "description": "Conexi\u00f3n a Copia de Seguridad"
+        },
+        {
+            "source": "msgServer",
+            "target": "judicial",
+            "description": "Conexi\u00f3n a Servidores del Poder Judicial"
+        }
+    ]
 }
