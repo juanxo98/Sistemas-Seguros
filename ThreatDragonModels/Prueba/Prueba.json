@@ -1,26 +1,198 @@
 {
-  "version": "2.3.0",
-  "summary": {
-    "title": "Prueba",
-    "owner": "Juan",
-    "description": "",
-    "id": 0
-  },
-  "detail": {
-    "contributors": [],
-    "diagrams": [
-      {
-        "id": 0,
-        "title": "Nuevo diagrama STRIDE",
-        "diagramType": "STRIDE",
-        "placeholder": "Descripción de nuevo diagrama STRIDE",
-        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
-        "version": "2.3.0",
-        "cells": []
-      }
-    ],
-    "diagramTop": 1,
-    "reviewer": "Juan",
-    "threatTop": 0
-  }
+    "version": "2.3.0",
+    "summary": {
+        "title": "Plataforma de Mensajer\u00eda Instant\u00e1nea",
+        "owner": "Juan",
+        "description": "Modelo de amenazas para una plataforma de mensajer\u00eda con cifrado E2E y cumplimiento de regulaciones locales.",
+        "id": 0
+    },
+    "detail": {
+        "contributors": [
+            "Juan"
+        ],
+        "diagrams": [
+            {
+                "id": 0,
+                "title": "Infraestructura de Mensajer\u00eda",
+                "diagramType": "STRIDE",
+                "placeholder": "Modelo de amenazas para la plataforma de mensajer\u00eda instant\u00e1nea.",
+                "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+                "version": "2.3.0",
+                "cells": [
+                    {
+                        "id": "userA",
+                        "type": "tm.Actor",
+                        "name": "Usuario A (M\u00f3vil)",
+                        "x": 50,
+                        "y": 300
+                    },
+                    {
+                        "id": "wifi",
+                        "type": "tm.Process",
+                        "name": "Wi-Fi",
+                        "x": 150,
+                        "y": 300
+                    },
+                    {
+                        "id": "redTelef",
+                        "type": "tm.Process",
+                        "name": "Red Telef\u00f3nica",
+                        "x": 150,
+                        "y": 200
+                    },
+                    {
+                        "id": "ispA",
+                        "type": "tm.Process",
+                        "name": "ISP Usuario A",
+                        "x": 250,
+                        "y": 250
+                    },
+                    {
+                        "id": "userB",
+                        "type": "tm.Actor",
+                        "name": "Usuario B (Ordenador)",
+                        "x": 50,
+                        "y": 50
+                    },
+                    {
+                        "id": "ethernet",
+                        "type": "tm.Process",
+                        "name": "Ethernet",
+                        "x": 150,
+                        "y": 50
+                    },
+                    {
+                        "id": "ispB",
+                        "type": "tm.Process",
+                        "name": "ISP Usuario B",
+                        "x": 250,
+                        "y": 50
+                    },
+                    {
+                        "id": "redTroncal",
+                        "type": "tm.DataStore",
+                        "name": "Red Troncal",
+                        "x": 400,
+                        "y": 150
+                    },
+                    {
+                        "id": "idServer",
+                        "type": "tm.Process",
+                        "name": "Servidor de Identidades",
+                        "x": 600,
+                        "y": 300
+                    },
+                    {
+                        "id": "mailbox",
+                        "type": "tm.Process",
+                        "name": "Mailbox",
+                        "x": 600,
+                        "y": 150
+                    },
+                    {
+                        "id": "msgServer",
+                        "type": "tm.Process",
+                        "name": "Servidor de Mensajer\u00eda",
+                        "x": 600,
+                        "y": 50
+                    },
+                    {
+                        "id": "backup",
+                        "type": "tm.DataStore",
+                        "name": "Copia de Seguridad (Google/Apple)",
+                        "x": 400,
+                        "y": 400
+                    },
+                    {
+                        "id": "judicial",
+                        "type": "tm.Process",
+                        "name": "Servidores Poder Judicial",
+                        "x": 800,
+                        "y": 150
+                    },
+                    {
+                        "source": "userA",
+                        "target": "wifi",
+                        "description": "Conexi\u00f3n Wi-Fi",
+                        "type": "tm.Flow"
+                    },
+                    {
+                        "source": "wifi",
+                        "target": "ispA",
+                        "description": "Conexi\u00f3n ISP Usuario A",
+                        "type": "tm.Flow"
+                    },
+                    {
+                        "source": "userA",
+                        "target": "redTelef",
+                        "description": "Conexi\u00f3n Red Telef\u00f3nica",
+                        "type": "tm.Flow"
+                    },
+                    {
+                        "source": "redTelef",
+                        "target": "ispA",
+                        "description": "Conexi\u00f3n ISP Usuario A",
+                        "type": "tm.Flow"
+                    },
+                    {
+                        "source": "userB",
+                        "target": "ethernet",
+                        "description": "Conexi\u00f3n Ethernet",
+                        "type": "tm.Flow"
+                    },
+                    {
+                        "source": "ethernet",
+                        "target": "ispB",
+                        "description": "Conexi\u00f3n ISP Usuario B",
+                        "type": "tm.Flow"
+                    },
+                    {
+                        "source": "ispA",
+                        "target": "redTroncal",
+                        "description": "Conexi\u00f3n a Red Troncal",
+                        "type": "tm.Flow"
+                    },
+                    {
+                        "source": "ispB",
+                        "target": "redTroncal",
+                        "description": "Conexi\u00f3n a Red Troncal",
+                        "type": "tm.Flow"
+                    },
+                    {
+                        "source": "redTroncal",
+                        "target": "idServer",
+                        "description": "Conexi\u00f3n al Servidor de Identidades",
+                        "type": "tm.Flow"
+                    },
+                    {
+                        "source": "redTroncal",
+                        "target": "mailbox",
+                        "description": "Conexi\u00f3n a Mailbox",
+                        "type": "tm.Flow"
+                    },
+                    {
+                        "source": "redTroncal",
+                        "target": "msgServer",
+                        "description": "Conexi\u00f3n al Servidor de Mensajer\u00eda",
+                        "type": "tm.Flow"
+                    },
+                    {
+                        "source": "redTroncal",
+                        "target": "backup",
+                        "description": "Conexi\u00f3n a Copia de Seguridad",
+                        "type": "tm.Flow"
+                    },
+                    {
+                        "source": "msgServer",
+                        "target": "judicial",
+                        "description": "Conexi\u00f3n a Servidores del Poder Judicial",
+                        "type": "tm.Flow"
+                    }
+                ]
+            }
+        ],
+        "diagramTop": 1,
+        "reviewer": "Juan",
+        "threatTop": 0
+    }
 }
